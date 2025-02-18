@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThunderGits</title>
+  <style>
+    body {
+      min-height: 100vh;
+      background-color: black;
+    }
+  </style>
+  <link rel="icon" href="./assets/logo/favicon.ico" type="image/x-icon"> <!-- For .ico -->
+  <link rel="icon" href="./assets/logo/thundergits_favicon.png" type="image/png">     <!-- For .png -->
+  <link rel="stylesheet" href="./css/font.css">
+  <link rel="stylesheet" href="./css/loader.css">
+  <link rel="stylesheet" href="./css/particle.css">
+  <!-- script
+    ================================================== -->
+  <script src="js/modernizr.js"></script>
+  <script src="js/pace.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: [
+        "./*.html", // Include all HTML files in the root directory
+        "./js/**/*.js" // Include all JS files in the js directory
+      ],
+      theme: {
+        extend: {
+          colors: {
+            primary: '#ec008c', // Accent color
+            secondary: '#111111', // Background color
+            white: '#ffffff', // White
+            gray: {
+              100: '#f7fafc',
+              200: '#edf2f7',
+              300: '#e2e8f0',
+              400: '#cbd5e0',
+              500: '#a0aec0',
+              600: '#718096',
+              700: '#4a5568',
+              800: '#2d3748',
+              900: '#1a202c'
+            },
+            dark: '#0d0d0d', // Slightly darker than the secondary color for contrast
+          },
+          fontFamily: {
+            domine: [
+              'domine-regular',
+              'domine-bold'
+            ],
+            metropolis: [
+              'metropolis-regular',
+              'metropolis-medium',
+              'metropolis-semibold',
+              'metropolis-bold',
+              'metropolis-light',
+              'metropolis-extralight',
+              'metropolis-italic'
+            ],
+            sans: ['metropolis-regular', 'sans-serif'], // Default font
+          },
+          spacing: {
+            18: '4.5rem',
+            22: '5.5rem',
+          },
+          borderRadius: {
+            xl: '1rem',
+            '2xl': '1.5rem',
+          },
+        },
+      },
+      plugins: [],
+    };
+  </script>
+  <link rel="stylesheet" href="./css/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+  <nav class="fixed top-0 w-full text-white z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 backdrop-blur">
+      <div class="flex justify-between h-16 items-center bg-black bg-opacity-80 rounded-lg px-5"
+        style="border: 1px solid rgb(77, 77, 77)">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="#">
+            <img src="./assets/logo/white_logo_2.png" alt="Logo" class="h-8 w-auto">
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex flex-grow space-x-4 justify-center my-2 px-4 nav-links">
+          <a href="#" class="hover:bg-opacity-70 px-3 py-2 rounded-md">Home</a>
+          <a href="#about" class="hover:bg-opacity-70 px-3 py-2 rounded-md">About</a>
+          <a href="#work" class="hover:bg-opacity-70 px-3 py-2 rounded-md">Work</a>
+          <a href="#Services" class="hover:bg-opacity-70 px-3 py-2 rounded-md">Services</a>
+          <a href="#contact-form" class="hover:bg-opacity-70 px-3 py-2 rounded-md">Contact</a>
+        </div>
+
+        <!-- Call-to-Action Button -->
+        <div class="hidden md:flex">
+          <a href="#contact-form"><button class="button-54" role="button">Get A Quote</button></a>
+        </div>
+
+        <!-- Hamburger Button for Mobile -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-btn" class="text-white focus:outline-none">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="fixed inset-y-0 right-0 w-full bg-black bg-opacity-90 text-white transform translate-x-full transition-transform duration-300 ease-in-out">
+      <div class="flex justify-between items-center p-5 border-b border-gray-700">
+        <h2 class="text-lg font-semibold">Menu</h2>
+        <button id="close-menu" class="text-white focus:outline-none">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-col space-y-4 p-5 nav-links">
+        <a href="#" class="block px-4 py-2 hover:bg-gray-700"
+          style="background-color: rgba(236, 0, 142, 0.801);">Home</a>
+        <a href="#about" class="block px-4 py-2 hover:bg-gray-700">About</a>
+        <a href="#work" class="block px-4 py-2 hover:bg-gray-700">Work</a>
+        <a href="#Service" class="block px-4 py-2 hover:bg-gray-700">Services</a>
+        <a href="#contact-form" class="block px-4 py-2 hover:bg-gray-700">Contact</a>
+        <a href="/#contact-form"
+          class="block px-4 py-2 mt-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-md"
+          style="width: fit-content;">Get A Quote</a>
+      </div>
+    </div>
+  </nav>
+  <!-- Hero Section -->
+  <section id="hero"
+    class="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hero">
+    <p class="text-sm font-bold text-white uppercase fade-in-up " style="letter-spacing: 3px;">Welcome to
+      ThunderGits
+      technologies</p>
+    <h1 class="text-4xl sm:text-6xl text-white fade-in-up my-5">Empowering Your Digital Presence <br> with
+      Next-Gen Solutions!</h1>
+
+
+    <!-- Expanded Content Paragraphs -->
+    <p class="mt-6 text-base sm:text-lg lg:text-xl text-gray-400 fade-in-up max-w-4xl mx-auto">
+      At ThunderGits Technologies, we specialize in delivering innovative digital experiences that help your business
+      grow and thrive in the digital age. Our team of experts is committed to crafting customized solutions tailored to
+      your unique needs.
+    </p>
+
+
+    <a href="#contact-form" class="mt-6 px-3 py-3 text-dark font-bold rounded-md hover:bg-blue-500 fade-in-up"
+      style="background-color: #fff;"> Get a Free
+      Consultation</a>
+  </section>
+  <!-- Why ThunderGits? -->
+  <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+        Why ThunderGits?
+      </h2>
+      <p class="mt-4 text-lg text-gray-400">
+        Discover why businesses worldwide trust us for innovative technology solutions.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+      <!-- Expert Team -->
+      <div class="p-6">
+        <div class="flex items-center space-x-4">
+          <div class="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+            <i class="ri-team-line text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Expert Team</h3>
+        </div>
+        <p class="mt-4 text-gray-400">
+          Professionals skilled in delivering the latest in tech.
+        </p>
+      </div>
+
+      <!-- Custom Solutions -->
+      <div class="p-6">
+        <div class="flex items-center space-x-4">
+          <div class="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+            <i class="ri-settings-3-line text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Custom Solutions</h3>
+        </div>
+        <p class="mt-4 text-gray-400">
+          Tailored to meet your business objectives.
+        </p>
+      </div>
+
+      <!-- Cutting-Edge Tech -->
+      <div class="p-6">
+        <div class="flex items-center space-x-4">
+          <div class="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+            <i class="ri-code-s-slash-line text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Cutting-Edge Tech</h3>
+        </div>
+        <p class="mt-4 text-gray-400">
+          Our solutions leverage AI, ML, cloud, and more.
+        </p>
+      </div>
+
+      <!-- Customer Focused -->
+      <div class="p-6">
+        <div class="flex items-center space-x-4">
+          <div class="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+            <i class="ri-user-heart-line text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Customer Focused</h3>
+        </div>
+        <p class="mt-4 text-gray-400">
+          We prioritize your satisfaction and long-term success.
+        </p>
+      </div>
+
+      <!-- Global Reach -->
+      <div class="p-6">
+        <div class="flex items-center space-x-4">
+          <div class="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+            <i class="ri-earth-line text-4xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Global Reach</h3>
+        </div>
+        <p class="mt-4 text-gray-400">
+          Trusted by businesses across the world.
+        </p>
+      </div>
+    </div>
+
+
+  </section>
+  <!-- What We Offer -->
+  <section  id="Services" class="py-20 shadow-2xl px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" style="padding-top: 0;">
+    <div class="max-w-screen-xl mx-auto text-center text-white">
+      <!-- Title Section -->
+      <h2 class="text-3xl font-extrabold text-white sm:text-4xl">What We Offer</h2>
+      <p class="mt-2 text-lg text-gray-300">Services That Drive Results</p>
+
+      <!-- Services Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 mt-12">
+
+        <!-- Digital Marketing -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-pie-chart-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Digital Marketing</h3>
+          <p class="text-gray-300 mt-2">Increase online visibility and drive customer engagement through SEO, PPC, and
+            social media campaigns tailored for your brand.</p>
+        </div>
+
+        <!-- Website Development -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-global-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Website Development</h3>
+          <p class="text-gray-300 mt-2">Custom, fast, and responsive websites built to deliver an intuitive user
+            experience.</p>
+        </div>
+
+        <!-- Application Development -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-apps-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Application Development</h3>
+          <p class="text-gray-300 mt-2">Develop robust mobile and web applications designed for scalability and
+            performance.</p>
+        </div>
+
+        <!-- E-Commerce Solutions -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-shopping-cart-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">E-Commerce Solutions</h3>
+          <p class="text-gray-300 mt-2">Complete e-commerce setups with seamless user journeys and optimized payment
+            systems.</p>
+        </div>
+
+        <!-- Machine Learning & AI -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-brain-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Machine Learning & AI</h3>
+          <p class="text-gray-300 mt-2">From predictive analytics to intelligent automation, we craft AI-driven
+            solutions.</p>
+        </div>
+
+        <!-- Custom Software Development -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-code-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Custom Software Development</h3>
+          <p class="text-gray-300 mt-2">Tailor-made software solutions built specifically for your business goals.</p>
+        </div>
+
+        <!-- Cloud Computing Services -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-cloud-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Cloud Computing Services</h3>
+          <p class="text-gray-300 mt-2">Scale your business effortlessly with secure and efficient cloud solutions.</p>
+        </div>
+
+        <!-- Artificial Intelligence Consulting -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-lightbulb-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Artificial Intelligence Consulting</h3>
+          <p class="text-gray-300 mt-2">Strategize and implement AI to unlock new possibilities for your business.</p>
+        </div>
+
+        <!-- DevOps and CloudOps Services -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-tools-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">DevOps and CloudOps Services</h3>
+          <p class="text-gray-300 mt-2">Streamline development and operations for faster, more reliable delivery.</p>
+        </div>
+
+        <!-- Business Intelligence & Analytics -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-bar-chart-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">Business Intelligence & Analytics</h3>
+          <p class="text-gray-300 mt-2">Turn data into actionable insights with advanced analytics and dashboards.</p>
+        </div>
+
+        <!-- IT Consultancy Services -->
+        <div class="bg-opacity-60 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 glassmorphism-card">
+          <div class="flex justify-center mb-4">
+            <div class="text-4xl bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
+              <i class="ri-user-settings-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-white">IT Consultancy Services</h3>
+          <p class="text-gray-300 mt-2">Your trusted partner in navigating complex technology landscapes.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<!-- Our Work -->
+  <section  id="work" class="bg-transparent text-gray-300 body-font px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap w-full mb-20">
+        <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+          <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Our Work</h2>
+          <div class="h-1 w-20 bg-gradient-to-r from-pink-500 to-purple-500 rounded"></div>
+        </div>
+        <p class="lg:w-1/2 w-full leading-relaxed text-gray-400">Here are some of the projects we've worked on to
+          deliver innovative IT solutions for businesses across various industries. From mobile apps to website
+          development, we ensure that each project exceeds client expectations with precision and professionalism.</p>
+      </div>
+      <div class="flex flex-wrap -m-4">
+        <!-- Crumbell Project -->
+        <div class="xl:w-1/2 md:w-1/2 p-4 flex">
+          <div class="light-purple-bg p-6 rounded-lg flex flex-col justify-between h-full"
+            style="border: 1px solid rgba(247, 247, 247, 0.459);">
+            <img class="h-50 rounded w-full object-cover object-center mb-6" src="./assets/work/crumbell.png"
+              alt="Crumbell Project">
+            <h3 class="tracking-widest text-pink-500 text-xs font-medium title-font">Mobile App & Backend</h3>
+            <h2 class="text-lg text-white font-medium title-font mb-4">Crumbell</h2>
+            <p class="leading-relaxed text-gray-400 flex-grow">A cross-platform mobile app and backend system designed
+              for seamless order and inventory management. Built with React Native, Express.js, and MongoDB, the app
+              integrates Google Maps for location tracking and provides comprehensive admin tools. <a
+                href="https://crumbell.in/" class="text-pink-500">View Project</a></p>
+          </div>
+        </div>
+        <!-- Kalvium -->
+        <div class="xl:w-1/2 md:w-1/2 p-4 flex">
+          <div class="light-purple-bg p-6 rounded-lg flex flex-col justify-between h-full"
+            style="border: 1px solid rgba(247, 247, 247, 0.459);">
+            <img class="h-50 rounded w-full object-cover object-center mb-6" src="./assets/work/LoginPageDemo.png"
+              alt="Kalvium Project">
+            <h3 class="tracking-widest text-pink-500 text-xs font-medium title-font">Social Media App</h3>
+            <h2 class="text-lg text-white font-medium title-font mb-4">Kalvium</h2>
+            <p class="leading-relaxed text-gray-400 flex-grow">A social media app with test-driven learning
+              capabilities, developed using ReactJS, Node.js, and SQLite. This app replicates Instagram's UI while
+              emphasizing student learning via test cases. <a href="https://kalvium.com/" class="text-pink-500">View
+                Project</a></p>
+          </div>
+        </div>
+
+        <!-- SSPS -->
+        <div class="xl:w-1/2 md:w-1/2 p-4 flex">
+          <div class="light-purple-bg p-6 rounded-lg flex flex-col justify-between h-full"
+            style="border: 1px solid rgba(247, 247, 247, 0.459);">
+            <img class="h-50 rounded w-full object-cover object-center mb-6" src="./assets/work/erp.png"
+              alt="SSP Project">
+            <h3 class="tracking-widest text-pink-500 text-xs font-medium title-font">School ERP System</h3>
+            <h2 class="text-lg text-white font-medium title-font mb-4">SSPS - School ERP</h2>
+            <p class="leading-relaxed text-gray-400 flex-grow">A comprehensive school ERP system built with MERN stack,
+              providing features like student management, attendance, grades, and reports to streamline administrative
+              tasks.</p>
+          </div>
+        </div>
+
+
+
+
+
+        <!-- Dawabiro -->
+        <div class="xl:w-1/2 md:w-1/2 p-4 flex">
+          <div class="light-purple-bg p-6 rounded-lg flex flex-col justify-between h-full"
+            style="border: 1px solid rgba(247, 247, 247, 0.459);">
+            <img class="h-50 rounded w-full object-cover object-center mb-6" src="./assets/work/dawabiro.png"
+              alt="Dawabiro Project">
+            <h3 class="tracking-widest text-pink-500 text-xs font-medium title-font">Medicine Comparison</h3>
+            <h2 class="text-lg text-white font-medium title-font mb-4">Dawabiro</h2>
+            <p class="leading-relaxed text-gray-400 flex-grow">A medicine comparison tool built with Next.js, Node.js,
+              and ExpressJS, featuring scheduled scraping functionality to provide updated comparisons for healthcare
+              users.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section
+    class="text-gray-400 body-font bg-gradient-to-t from-transparent via-black to-tranparent px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="max-w-7xl mx-auto text-center">
+        <h2 class="text-3xl font-extrabold text-white sm:text-4xl mb-5">
+          What Our Clients Say
+        </h2>
+
+      </div>
+      <br>
+      <div class="flex flex-wrap -m-4">
+        <!-- Testimonial 1 -->
+        <div class="lg:w-1/3 lg:mb-0 mb-6 p-4">
+          <div class="h-full text-center">
+            <img alt="testimonial"
+              class="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-700 bg-gray-800"
+              src="./assets/clients/crumbell.jpeg">
+            <p class="leading-relaxed">Working with ThunderGits was an absolute game-changer for us. Their expertise in
+              mobile app development brought our vision for Crumbell to life. The app they designed is not only sleek
+              and user-friendly but also highly functional, exceeding our expectations. </p>
+            <span class="inline-block h-1 w-10 rounded bg-pink-600 mt-6 mb-4"></span>
+            <h2 class="text-white font-medium title-font tracking-wider text-sm">Pritam Kumar</h2>
+            <p class="text-gray-500">Founder Of Crumbell</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="lg:w-1/3 lg:mb-0 mb-6 p-4">
+          <div class="h-full text-center">
+            <img alt="testimonial"
+              class="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-700 bg-gray-800"
+              src="./assets/clients/fine.png">
+            <p class="leading-relaxed">As a startup, we needed a reliable and innovative partner to help us launch our
+              mobile app—and ThunderGits delivered! They handled everything from design to development with precision
+              and creativity. Their ability to adapt to our changing needs truly impressed us</p>
+            <span class="inline-block h-1 w-10 rounded bg-pink-600 mt-6 mb-4"></span>
+            <h2 class="text-white font-medium title-font tracking-wider text-sm">Prem Kumar</h2>
+            <p class="text-gray-500">Founder Of Fi9e</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="lg:w-1/3 lg:mb-0 p-4">
+          <div class="h-full text-center">
+            <img alt="testimonial"
+              class="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-700 bg-gray-800"
+              src="./assets/clients/kalope.jpg">
+            <p class="leading-relaxed">We approached ThunderGits with a challenging project—developing a medicine
+              comparison tool with scheduled scrapers. They not only met but surpassed our expectations. Their attention
+              to detail, technical proficiency, and innovative solutions helped us create Dawabiro.</p>
+            <span class="inline-block h-1 w-10 rounded bg-pink-600 mt-6 mb-4"></span>
+            <h2 class="text-white font-medium title-font tracking-wider text-sm">Sahil Saxena</h2>
+            <p class="text-gray-500">Founder Of Dawabiro</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- <br>
+  <br> -->
+
+  <section id="contact-form" class="body-font relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center">
+      <h2 class="text-3xl sm:text-4xl text-white font-bold">Get in Touch</h2>
+      <p class="mt-4 text-lg sm:text-xl text-gray-400">
+        We'd love to hear from you. Whether you have a question or feedback,
+        feel free to reach out!
+      </p>
+    </div>
+
+    <div class="container pb-24 pt-12 mx-auto flex sm:flex-nowrap flex-wrap">
+      <!-- Map with Address and Contact Details -->
+      <div
+        class="lg:w-2/3 md:w-1/2 bg-black-800 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+        <iframe width="100%" height="100%" title="map" class="absolute inset-0" frameborder="0" marginheight="0"
+          marginwidth="0" scrolling="no"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7020.481486785019!2d77.3085014898034!3d28.381795792470683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdc46cbf45017%3A0x7463ddfb30ab3cb0!2sBata%20Chowk!5e0!3m2!1sen!2sin!4v1735710264443!5m2!1sen!2sin"
+          style="filter: grayscale(1) contrast(1.2) opacity(1)"></iframe>
+        <div class="relative flex flex-wrap py-6 rounded shadow-md bg-black">
+          <div class="lg:w-1/2 px-6">
+            <h2 class="title-font font-semibold text-white tracking-widest text-xs">
+              ADDRESS
+            </h2>
+            <p class="mt-1 text-gray-400">
+              Sector 85, Bata Chowk, Faridabad, Haryana, India, 121002
+            </p>
+          </div>
+          <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+            <h2 class="title-font font-semibold text-white tracking-widest text-xs">
+              EMAIL
+            </h2>
+            <a class="text-pink-500 leading-relaxed">info@thundergits.com</a>
+            <h2 class="title-font font-semibold text-white tracking-widest text-xs mt-4">
+              PHONE
+            </h2>
+            <p class="leading-relaxed text-gray-400">+91-7765979725</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Form -->
+      <div class="lg:w-1/3 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
+        <h2 class="text-white text-lg mb-1 font-medium title-font">Feedback</h2>
+        <p class="leading-relaxed mb-5 text-gray-400">
+          We value your feedback! Share your thoughts, suggestions, or questions below.
+        </p>
+        <form id="feedback-form">
+          <div class="relative mb-4">
+            <label for="name" class="leading-7 text-sm text-gray-400">Name</label>
+            <input type="text" id="name" name="leadName"
+              class="w-full rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out bg-gray-800"
+              required />
+          </div>
+          <div class="relative mb-4">
+            <label for="email" class="leading-7 text-sm text-gray-400">Email</label>
+            <input type="email" id="email" name="leadEmail"
+              class="w-full rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out bg-gray-800"
+              required />
+          </div>
+          <div class="relative mb-4">
+            <label for="phone" class="leading-7 text-sm text-gray-400">Phone</label>
+            <input type="tel" id="phone" name="leadPhone"
+              class="w-full rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out bg-gray-800"
+              required />
+          </div>
+          <div class="relative mb-4">
+            <label for="message" class="leading-7 text-sm text-gray-400">Message</label>
+            <textarea id="message" name="notes"
+              class="w-full rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out bg-gray-800"
+              required></textarea>
+          </div>
+
+          <button type="submit"
+            class="text-white bg-gradient-to-r from-pink-500 to-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded text-lg">
+            Submit
+          </button>
+        </form>
+
+
+
+        <p class="text-xs text-gray-400 text-opacity-90 mt-3">
+          Thank you for reaching out! We appreciate your feedback and will respond shortly.
+        </p>
+      </div>
+
+
+
+    </div>
+  </section>
+
+
+  <footer class="text-gray-400 bg-black body-font">
+    <div
+      class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+      <!-- Logo Section -->
+      <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+          <img src="../assets/logo/white_logo_2.png" alt="ThunderGits Logo" class="w-10 h-10 p-2" />
+          <span class="ml-3 text-xl">ThunderGits</span>
+        </a>
+        <p class="mt-2 text-sm text-gray-500">
+          Innovating through technology and creativity, building the future.
+        </p>
+      </div>
+
+      <!-- Link Sections -->
+      <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+        <!-- Links Column 1 -->
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">
+            Explore
+          </h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a href="/" class="text-gray-400 hover:text-white">Home</a>
+            </li>
+            <li>
+              <a href="#about" class="text-gray-400 hover:text-white">About</a>
+            </li>
+            <li>
+              <a href="#work" class="text-gray-400 hover:text-white">Work</a>
+            </li>
+          
+          </nav>
+        </div>
+
+        <!-- Links Column 2 -->
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">
+            Company
+          </h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a href="#about" class="text-gray-400 hover:text-white">About</a>
+            </li>
+           
+            <li>
+              <a href="#contact-form" class="text-gray-400 hover:text-white">Contact</a>
+            </li>
+            <li>
+              <a href="#Services" class="text-gray-400 hover:text-white">Services</a>
+            </li>
+          </nav>
+        </div>
+
+
+
+        
+         
+          <!-- Contact Column (with icons) -->
+          <div class="lg:w-1/2 md:w-1/2 w-full px-4">
+            <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">
+              Contact
+            </h2>
+            <nav class="list-none mb-10 footer-contact">
+              <li class="text-gray-400 flex items-start">
+                <!-- Address Icon -->
+                <i class="ri-map-pin-fill mr-2"></i>
+                <span class="block">Sector 85, Bata Chowk, Faridabad, Haryana, India, 121002</span>
+              </li>
+              <li class="text-gray-400 flex items-start">
+                <!-- Phone Icon -->
+                <i class="ri-phone-fill mr-2"></i>
+                <span class="block">+91-9304039197</span>
+              </li>
+              <li class="text-gray-400 flex items-start">
+                <!-- Email Icon -->
+                <i class="ri-mail-fill mr-2"></i>
+                <a href="mailto:contact@thundergits.com" class="block hover:text-white">info@thundergits.com</a>
+              </li>
+            </nav>
+          </div>
+
+      </div>
+    </div>
+
+    <!-- Footer Bottom Section -->
+    <div class="bg-black bg-opacity-75">
+      <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+        <p class="text-gray-400 text-sm text-center sm:text-left">
+          © 2025 ThunderGits —
+          <a rel="noopener noreferrer" class="ml-1"> All Rights Reserved</a>
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+          <a href="https://www.facebook.com/profile.php?id=61571113486327" target="_blank" class="text-gray-400">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://x.com/thundergits" target="_blank" class="ml-3 text-gray-400">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+              </path>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/thundergits/" target="_blank" class="ml-3 text-gray-400">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/company/thundergits" target="_blank" class="ml-3 text-gray-400">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+  <div id="particles-js" class="home-particles"></div>
+  <div class="gradient-overlay"></div>
+  <div class="radial-overlay"></div>
+  <!-- preloader
+    ================================================== -->
+  <div id="preloader">
+    <div id="loader">
+      <div class="line-scale-pulse-out">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  <!-- Java Script
+    ================================================== -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/polygons.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+    });
+
+    closeMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+    });
+  </script>
+
+  <script>
+    // Handle form submission
+    document.getElementById('feedback-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      // Collect form data
+      const formData = {
+        leadName: document.getElementById('name').value,
+        leadEmail: document.getElementById('email').value,
+        leadPhone: document.getElementById('phone').value,     
+        leadSource: 'Website',        // Update this field as necessary        
+        notes: document.getElementById('message').value,
+      };
+
+      // Send the data using fetch to the API
+      fetch('https://tgapp.thundergits.com/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+          alert('Lead created successfully!');
+          // Redirect or update UI as needed
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          alert('Failed to create lead');
+        });
+    });
+
+    // const feedbackForm = document.getElementById('feedback-form');
+
+    // feedbackForm.addEventListener('submit', (e) => {
+    //   e.preventDefault();
+
+    //   // Get input values
+    //   const name = document.getElementById('name').value.trim();
+    //   const email = document.getElementById('email').value.trim();
+    //   const message = document.getElementById('message').value.trim();
+
+    //   // Create the mailto link
+    //   const mailtoLink = `mailto:info@thundergits.com?subject=Feedback from ${encodeURIComponent(
+    //     name
+    //   )}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(
+    //     email
+    //   )}%0AMessage: ${encodeURIComponent(message)}`;
+
+    //   // Open the mailto link in a new tab
+    //   window.open(mailtoLink, '_blank');
+    // });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+nav {
+    z-index: 100;
+}
+
+h1 {
+    font-family: "domine-regular", sans-serif;
+}
+
+.hero{
+    margin-top: 3rem;
+}
+
+@media screen and (max-width:1024px) {
+    #about-hero{margin-top: 10rem;}
+    #work-hero{margin-top: 10rem;}
+    #career-hero{margin-top: 5rem;}
+}
+
+
+#hero-para {
+    color: #fff;
+    text-shadow: 0 0 0.15em #1da9cc;
+    filter: blur(0.007em);
+}
+
+
+
+
+
+.backdrop-blur {
+    backdrop-filter: blur(70px);
+
+}
+.backdrop-blur-10 {
+    backdrop-filter: blur(10px);
+
+}
+
+.glassmorphism-card {
+    background: rgb(255 255 255 / 0%);  /* Semi-transparent white */
+    backdrop-filter: blur(3px);           /* Blur the background */
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Soft, semi-transparent border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glassmorphism-card:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Deeper shadow on hover */
+}
+
+.light-purple-bg{
+    background-color: #c759d40f
+}
+
+.purple-clr{
+    color:rgb(236, 0, 140)
+}
+
+.nav-links a:hover {
+    background-color: rgba(236, 0, 142, 0.801);  
+}
+
+/* CSS */
+.button-54 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 0px 0px 0px 0px, 0px 0px 0px 0px, 2px 2px 0px 0px, 2px 2px 0px 0px, 2px 2px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+.button-54:hover{
+    transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
+ 
+}
+
+@media (max-width: 768px) {
+  
+    .footer-contact{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
