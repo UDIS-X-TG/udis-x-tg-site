@@ -590,21 +590,75 @@
   <script>
     document.getElementById("feedback-form").addEventListener("submit", function (event) {
       event.preventDefault();
-      alert("🎉 Thank you for your message! We will get back to you soon.");
+  
+      // Form field values
+      let name = document.getElementById("name").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let message = document.getElementById("message").value.trim();
+  
+      // WhatsApp number
+      let whatsappNumber = "918757807372";
+  
+      // Properly formatted WhatsApp message
+      let whatsappMessage = 
+        "*Hello Team!,*\n\n" +
+        "I have submitted an inquiry through your website. Here are my details:\n\n" +
+        "*Name:* " + name + "\n" +
+        "*Phone:* " + phone + "\n" +
+        "*Email:* " + email + "\n" +
+        "*Message:* " + message + "\n\n" +
+        "Looking forward to your response.\n\n" +
+        "*Best regards,*\n" + name;
+  
+      // WhatsApp API URL
+      let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  
+      // Open WhatsApp chat
+      window.open(whatsappURL, "_blank");
+  
+      // Reset the form
       this.reset();
     });
   </script>
   
   
-  <script>
-    document.getElementById("feedback-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-      alert("🎉 Thank you for your message! We will get back to you soon.");
-      this.reset();
-    });
-  </script>
-  
-  
+
+ <!-- CTA Section -->
+ <section
+ class="bg-gradient-to-r from-pink-500 to-purple-500 text-white text-center py-16 mt-6"
+>
+ <h2
+   class="text-3xl sm:text-4xl font-bold mb-4 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
+ >
+   Ready to Take Your Business to the Next Level?
+ </h2>
+ <p
+   class="text-lg sm:text-xl mb-8 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
+ >
+   Whether you're looking to transform your IT infrastructure, develop
+   custom software, or take your business to the cloud, ThunderGits
+   Technologies has the expertise to make it happen. Let’s work together
+   and bring your vision to life!
+ </p>
+ <div
+   class="flex justify-center gap-6 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
+ >
+   <a
+     href="#contact-form"
+     class="px-8 py-3 bg-white text-gray-800 text-lg font-medium rounded-lg hover:bg-gray-200 transition duration-300"
+   >
+     Get in Touch
+ </a>
+   <a
+     href="#Services"
+     class="px-8 py-3 border border-white text-white text-lg font-medium rounded-lg hover:bg-white hover:text-gray-800 transition duration-300"
+   >
+     Explore Our Services
+   </a>
+ </div>
+</section>
+
 
 
   <footer class="text-gray-400 bg-black body-font">
